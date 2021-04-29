@@ -21,6 +21,8 @@
  
     <script>
         $(function() {
+            let color = ["#c5f0a8","#c8f0a8","#cbf0a8","#cef0a8","#d2f0a8","#d5f0a8","#d8f0a8","#dbf0a8","#def0a8","#e2f0a8","#e5f0a8","#e8f0a8","#ebf0a8","#eef0a8","#f0f0a8",
+                    "#f0eca8","#f0e9a8","#f0e6a8","#f0e3a8","#f0e0a8","#f0dda8","#f0daa8","#f0d7a8","#f0d4a8","#f0d1a8","#f0cda8","#f0c9a8","#f0c6a8","#f0c3a8"];
             $.getJSON("overview.json",function(data){ 
                 //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/overview.json
                 console.log(data);
@@ -31,7 +33,7 @@
                 }
                 let tmp = data[0].result;
                 for(let j = 0; j < tmp.length; j++ ){
-                    let row = `<td><a class="simptip-position-top" data-tooltip="${tmp[j].algo}" style="cursor:pointer">${tmp[j].short}</a></td><td>${tmp[j].rank}</td>`;
+                    let row = `<td><a class="simptip-position-top" data-tooltip="${tmp[j].algo}" style="cursor:pointer">${tmp[j].short}</a></td><td style="background-color:${color[j]}">${tmp[j].rank}</td>`;
                     for(let k = 0; k < data.length; k++ ){
                         if(data[k].result[j].extra!=""){
                             row += `<td><a style="cursor:pointer" class="simptip-position-top" data-tooltip="${data[k].result[j].extra}">${data[k].result[j].mark}</a></td>`;
@@ -42,7 +44,7 @@
                     }
                      tbody += `<tr>${row}</tr>`;
                 }
-                $("#thead").html(`<tr><th>Method</th><th>Rank</th>${thead}</tr>`);
+                $("#thead").html(`<tr><th>Method</th><th>Rank*</th>${thead}</tr>`);
                 $("#tbody").html(tbody);
             })
         })
