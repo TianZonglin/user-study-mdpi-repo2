@@ -20,7 +20,8 @@
 
     <script>
         $(function() {
-            $.getJSON("https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json",function(data){ //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json
+            $.getJSON("dataset.json",function(data){ 
+                //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json
                 console.log(data);
                 let textable = "";
                 $("#modal").html("");

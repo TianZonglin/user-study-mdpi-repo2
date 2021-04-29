@@ -20,7 +20,8 @@
 
     <script> 
         $(function() {
-            $.getJSON("https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/resources.json",function(data){  
+            $.getJSON("resources.json",function(data){  
+                //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/resources.json
                 function makeup(tname){
                     let arr = eval('data.'+tname);
                     let rows = Math.ceil(arr.length/(5*2));
