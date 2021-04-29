@@ -418,7 +418,7 @@
             "Response for Class(RFC)."
         ]
     }
-},
+}, 
 {
     "name": "Wine / winequality",
     "intro": "A dataset that consists of 6498 wines divided into 4898 red and 1600 white ones.",
