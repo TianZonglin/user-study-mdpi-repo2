@@ -2,7 +2,7 @@
     "name": "Abalone",
     "intro": "Predicting the age of abalone from physical measurements. The age of abalone is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope -- a boring and time-consuming task. Other measurements, which are easier to obtain, are used to predict the age. Further information, such as weather patterns and location (hence food availability) may be required to solve the problem.",
     "url": "https://archive.ics.uci.edu/ml/datasets/Abalone",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Classification",
     "missformat":"No",
     "numbers": {
         "instances": 4177,
@@ -32,7 +32,7 @@
     "name": "AirQuality",
     "intro": "Predicting the age of abalone from physical measurements. The age of abalone is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope -- a boring and time-consuming task. Other measurements, which are easier to obtain, are used to predict the age. Further information, such as weather patterns and location (hence food availability) may be required to solve the problem.",
     "url": "https://archive.ics.uci.edu/ml/datasets/Air+Quality",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate, Time-Series / Classification",
     "missformat":"Yes",
     "numbers": {
         "instances": 9358,
@@ -67,7 +67,7 @@
     "name": "Bank",
     "intro": "The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed. The classiﬁcation goal is to predict if the client will subscribe (yes/no) a term deposit (variable y).",
     "url": "https://archive.ics.uci.edu/ml/datasets/Bank+Marketing",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 45211,
@@ -106,7 +106,7 @@
     "name": "Banknote",
     "intro": "Data were extracted from images that were taken from genuine and forged banknote-like specimens. For digitization, an industrial camera usually used for print inspection was used. The ﬁnal images have 400x 400 pixels. Due to the object lens and distance to the investigated object gray-scale pictures with a resolution of about 660 dpi were gained.",
     "url": "https://archive.ics.uci.edu/ml/datasets/banknote+authentication",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 1372,
@@ -131,7 +131,7 @@
     "name": "CityPollution",
     "intro": "This data set includes hourly air pollutants data from 12 nationally-controlled air-quality monitoring sites. The air-quality data are from the Beijing Municipal Environmental Monitoring Center. The meteorological data in each air-quality site are matched with the nearest weather station from the China Meteorological Administration. The time period is from March 1st, 2013 to February 28th, 2017. ",
     "url": "https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate, Time-Series / Regression",
     "missformat":"NA",
     "numbers": {
         "instances": 420768,
@@ -167,9 +167,9 @@
 },
 {
     "name": "Concrete",
-    "intro": "",
+    "intro": "Concrete is the most important material in civil engineering. The concrete compressive strength is a highly nonlinear function of age and ingredients.",
     "url": "https://archive.ics.uci.edu/ml/datasets/concrete+compressive+strength",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Regression",
     "missformat":"N/A",
     "numbers": {
         "instances": 1030,
@@ -196,10 +196,10 @@
     }
 },
 {
-    "name": "Defaultcc / default of credit card clients",
+    "name": "Defaultcc",
     "intro": "This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classiﬁcation - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel â€œSorting Smoothing Method's to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artiﬁcial neural network has the highest coeﬃcient of determination; its regression intercept (A) is close to zero, and regression coeﬃcient (B) to one. Therefore, among the six data mining techniques, artiﬁcial neural network is the only one that can accurately estimate the real probability of default.",
     "url": "https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 30000,
@@ -236,7 +236,7 @@
     "name": "Diabetes",
     "intro": "This has been collected using direct questionnaires from the patients of Sylhet Diabetes Hospital in Sylhet, Bangladesh and approved by a doctor.",
     "url": "https://archive.ics.uci.edu/ml/datasets/Early+stage+diabetes+risk+prediction+dataset.",
-    "feature": "Multivariate",
+    "feature": "Multivariate / Classification",
     "missformat":"Yes",
     "numbers": {
         "instances": 520,
@@ -271,16 +271,16 @@
 },
 {
     "name": "Epileptic",
-    "intro": "",
+    "intro": "This dataset is a pre-processed and re-structured/reshaped version of a very commonly used dataset featuring epileptic seizure detection.",
     "url": "https://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate, Time-Series / Classification, Clustering",
     "missformat":"N/A",
     "numbers": {
         "instances": 11500,
         "attributes": 179
     },
     "download": {
-        "type": "none",
+        "type": "-",
         "url": "#"
     },
     "attrs": {
@@ -302,7 +302,7 @@
     "name": "Happiness",
     "intro": "It is a case of supervised learning with the use of Receiver Operating Characteristic (ROC) to select the minimal set of attributes preserving or increasing predictability of the data.",
     "url": "https://archive.ics.uci.edu/ml/datasets/Somerville+Happiness+Survey",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 143,
@@ -329,7 +329,7 @@
     "name": "Reuters",
     "intro": "A bag of words type dataset to for reuters news publications with as output one of 46 topics. The numbers we see actually encode the n-th most common word.",
     "url": "https://keras.io/api/datasets/reuters/",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 11228,
@@ -350,7 +350,7 @@
     "name": "Seismic",
     "intro": "Mining activity was and is always connected with the occurrence of dangers which are commonly called mining hazards. A special case of such threat is a seismic hazard which frequently occurs in many underground mines. Seismic hazard is the hardest detectable and predictable of natural hazards and in this respect it is comparable to an earthquake. More and more advanced seismic and seismoacoustic monitoring systems allow a better understanding rock mass processes and deﬁnition of seismic hazard prediction methods.",
     "url": "https://archive.ics.uci.edu/ml/datasets/seismic-bumps",
-    "feature": "Multivariate, Time-Series",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 2584,
@@ -387,17 +387,17 @@
 },
 {
     "name": "Software",
-    "intro": "",
-    "url": "https://archive.ics.uci.edu/ml/datasets/seismic-bumps",
-    "feature": "Multivariate, Time-Series",
+    "intro": "A significant number of Free Software projects has been widely used and considered successful. However, there is an even larger number of them that cannot overcome the initial step towards building an active community of users and developers. In this study, we investigated whether there are relationships between source code metrics and attractiveness, i.e., the ability of a project to attract users and developers. To verify these relationships, we analyzed 6,773 Free Software projects from the SourceForge.net repository. The results indicated that attractiveness is indeed correlated to some source code metrics. This suggests that measurable attributes of the project source code somehow affect the decision to contribute and adopt a Free Software project. The findings described in this study show that it is relevant for project leaders to monitor source code quality, most specifically a few objective metrics, since these can have a positive influence in their chances of forming a community of contributors and users around the software, enabling further enhancement in its quality.",
+    "url": "https://doi.org/10.1109/SBES.2010.27",
+    "feature": "Multivariate / Classification",
     "missformat":"N/A",
     "numbers": {
         "instances": 6773,
         "attributes": 12
     },
     "download": {
-        "type": "csv",
-        "url": "csv"
+        "type": "-",
+        "url": "https://drive.google.com/file/d/1r9fodG3tdWYc3hGCkpgVrtTyijf9poPo/view?usp=sharing"
     },
     "attrs": {
         "type":"list",
@@ -420,7 +420,7 @@
     }
 }, 
 {
-    "name": "Wine / winequality",
+    "name": "Winequality",
     "intro": "A dataset that consists of 6498 wines divided into 4898 red and 1600 white ones.",
     "url": "https://archive.ics.uci.edu/ml/datasets/wine+quality",
     "feature": "Multivariate, Time-Series",
@@ -453,7 +453,7 @@
 },
 {
     "name": "WisconsinBreastCancer",
-    "intro": "",
+    "intro": "Diagnostic Wisconsin Breast Cancer Database",
     "url": "https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)",
     "feature": "Multivariate, Time-Series",
     "missformat":"No",

@@ -7,11 +7,10 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        Quantitative and Qualitative Comparison of 2D and 3D Projection Techniques for High-Dimensional Data
+        Datasets - Quantitative and Qualitative Comparison of 2D and 3D Projection Techniques for High-Dimensional Data
     </title>
- 
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.loli.net/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -21,7 +20,7 @@
 
     <script>
         $(function() {
-            $.getJSON("https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json",function(data){
+            $.getJSON("https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json",function(data){ //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json
                 console.log(data);
                 let textable = "";
                 $("#modal").html("");
@@ -34,9 +33,9 @@
                     str += `<td><span>${obj.numbers.attributes}</span></td>`;
                     str += `<td><span>${obj.numbers.instances}</span></td>`;
                     str += `<td><a href="#${idi}" rel="modal:open">more details</a></td>`;
-                    str += `<td><a href="${obj.download.url}">${obj.download.type}</a></td>`;
-                    let dvi = `<div id="${idi}" class="modal" style="text-align:left;max-width: 60% !important;">`
-                                      +`<b>Attributes description</b><br>`;
+                    str += `<td><a target="_blank" href="${obj.download.url}">${obj.download.type}</a></td>`;
+                    let dvi = `<div id="${idi}" class="modal" style="text-align:left;max-width: 60% !important;font-size:15px">`
+                                      +`<b>Description</b><br><span>${obj.intro}</span><br><br><b>Attributes</b><br>`;
                     if(obj.attrs.type.indexOf("table")>-1){
                         let splt = obj.attrs.type.split("@")[1];
                         let stable = "";
@@ -45,20 +44,20 @@
                             let arr = obj.attrs.content[j].split(splt);
                             if(j == 0){
                                 for(let k = 0; k < arr.length; k++ )
-                                    tmp += `<td><b>${arr[k]}</b></td>`;
+                                    tmp += `<td style="line-height:10px;"><b>${arr[k]}</b></td>`;
                             }else{
                                 for(let k = 0; k < arr.length; k++ )
-                                    tmp += `<td>${arr[k]}</td>`;
+                                    tmp += `<td style="line-height:10px;">${arr[k]}</td>`;
                             }
                             stable += `<tr>${tmp}</tr>`;
                         }
-                        dvi += `<table>${stable}</table></div>`;
+                        dvi += `<table style="margin:0px">${stable}</table></div>`;
                     }else if(obj.attrs.type.indexOf("list")>-1){
                         let stable = "";
                         for(let j = 0; j < obj.attrs.content.length; j++ ){
                             stable += `<li>${obj.attrs.content[j]}</li>`;
                         }
-                        dvi += `<ul>${stable}</ul></div>`;
+                        dvi += `<ul style="margin:0px">${stable}</ul><br><b>SourceURL</b><br><a traget="_blank" href="${obj.url}">${obj.url}</a><br></div>`;
                     }                 
                     textable += `<tr>${str}<tr>`;
                     $("#modal").append(dvi);
@@ -69,7 +68,7 @@
     </script>
 </head>
 
-<body class="post-template">
+<body style="max-width: 1100px;" class="post-template">
     <header class="main-header">
         <div class="main-header-content">
             <h1 class="blog-title">
@@ -96,7 +95,7 @@
             </header>
             <section class="post-content">
 
-                <p><a target="_blank" href="https://drive.google.com/file/d/1dX_ehEDsn_lCQSt12C0uTJHeIamJ1X7b/view?usp=sharing">All datasets, in csv formats</a></p>
+                <p><a target="_blank" href="https://drive.google.com/file/d/1r9fodG3tdWYc3hGCkpgVrtTyijf9poPo/view?usp=sharing">All datasets, in csv formats</a></p>
 
                 <h5 id="individual-datasets">Individual datasets</h5>
                 <div id="modal"> </div>
@@ -104,7 +103,7 @@
                     <thead>
                         <tr>
                             <th>Dataset</th>
-                            <th>Category</th>
+                            <th>Category / Task</th>
                             <th>Instances</th>
                             <th>Dimensions</th>
                             <th>Attributions</th>
