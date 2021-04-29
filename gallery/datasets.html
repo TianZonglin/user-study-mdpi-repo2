@@ -20,8 +20,8 @@
 
     <script>
         $(function() {
-            $.getJSON("dataset.json",function(data){ 
-                //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/dataset.json
+            $.getJSON("datasets.json",function(data){ 
+                //https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/gallery/datasets.json
                 console.log(data);
                 let textable = "";
                 $("#modal").html("");
@@ -82,7 +82,7 @@
         <div class="nav">
             <a class="nav-" role="presentation" href="datasets.html">Datasets</a>
             <a class="nav-" role="presentation" href="experiment.html">Experiment</a>
-            <a class="nav-" role="presentation" href="measurements.html">Measurements</a>
+            <a class="nav-" role="presentation" href="overview.html">Overview</a>
             <a class="nav-" role="presentation" href="explanations.html">Explanations</a>
         </div>
     </header>
@@ -116,9 +116,7 @@
                 </table>
  
             </section>
-            <footer class="post-footer">
-
-            </footer>
+ 
         </article>
     </main>
 
