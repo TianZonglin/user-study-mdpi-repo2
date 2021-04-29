@@ -35,7 +35,7 @@
                     str += `<td><span>${obj.numbers.instances}</span></td>`;
                     str += `<td><a href="#${idi}" rel="modal:open">more details</a></td>`;
                     str += `<td><a href="${obj.download.url}">${obj.download.type}</a></td>`;
-                    let dvi = `<div id="${idi}" class="modal" style="text-align:left;max-width: 75% !important;">`
+                    let dvi = `<div id="${idi}" class="modal" style="text-align:left;max-width: 60% !important;">`
                                       +`<b>Attributes description</b><br>`;
                     if(obj.attrs.type.indexOf("table")>-1){
                         let splt = obj.attrs.type.split("@")[1];
