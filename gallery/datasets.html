@@ -4,30 +4,68 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
-    <title>
-
-        Datasets - Towards A Quantitative Survey of Dimension Reduction Techniques
-
-    </title>
-
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Quantitative and Qualitative Comparison of 2D and 3D Projection Techniques for High-Dimensional Data
+    </title>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.loli.net/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-    <link
-        href="https://fonts.loli.net/css?family=Bree+Serif|Lato:100,100i,300,300i,400,400i,700,700i|Source+Code+Pro:300,400,500,700"
-        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/bigfoot/dist/bigfoot.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/TianZonglin/proj-quant-eval/site/public/assets/bigfoot/dist/bigfoot-number.css" />
-    <script type="text/javascript">
-        $.bigfoot();
+    <script>
+        $(function() {
+            $.getJSON("dataset.json",function(data){
+                console.log(data);
+                let textable = "";
+                $("#modal").html("");
+                for(let i = 0; i < data.length; i++ ){
+                    let obj = data[i];
+                    let str = "";
+                    let idi = "id"+i;
+                    str += `<td><a target="_blank" href="${obj.url}">${obj.name}</a></td>`;
+                    str += `<td><span>${obj.feature}</span></td>`;
+                    str += `<td><span>${obj.numbers.attributes}</span></td>`;
+                    str += `<td><span>${obj.numbers.instances}</span></td>`;
+                    str += `<td><a href="#${idi}" rel="modal:open">more details</a></td>`;
+                    str += `<td><a href="${obj.download.url}">${obj.download.type}</a></td>`;
+                    let dvi = `<div id="${idi}" class="modal" style="text-align:left;max-width: 75% !important;">`
+                                      +`<b>Attributes description</b><br>`;
+                    if(obj.attrs.type.indexOf("table")>-1){
+                        let splt = obj.attrs.type.split("@")[1];
+                        let stable = "";
+                        for(let j = 0; j < obj.attrs.content.length; j++ ){
+                            let tmp = "";
+                            let arr = obj.attrs.content[j].split(splt);
+                            if(j == 0){
+                                for(let k = 0; k < arr.length; k++ )
+                                    tmp += `<td><b>${arr[k]}</b></td>`;
+                            }else{
+                                for(let k = 0; k < arr.length; k++ )
+                                    tmp += `<td>${arr[k]}</td>`;
+                            }
+                            stable += `<tr>${tmp}</tr>`;
+                        }
+                        dvi += `<table>${stable}</table></div>`;
+                    }else if(obj.attrs.type.indexOf("list")>-1){
+                        let stable = "";
+                        for(let j = 0; j < obj.attrs.content.length; j++ ){
+                            stable += `<li>${obj.attrs.content[j]}</li>`;
+                        }
+                        dvi += `<ul>${stable}</ul></div>`;
+                    }                 
+                    textable += `<tr>${str}<tr>`;
+                    $("#modal").append(dvi);
+                }
+                $("#tab").html(textable);
+            });
+        })  
     </script>
 </head>
 
@@ -36,9 +74,7 @@
         <div class="main-header-content">
             <h1 class="blog-title">
                 <a href="../gallery/">
-
                     Quantitative and Qualitative Comparison of 2D and 3D Projection Techniques for High-Dimensional Data
-
                 </a>
             </h1>
             <h2 class="blog-description">- - -</h2>
@@ -60,178 +96,25 @@
             </header>
             <section class="post-content">
 
-
-                <p><a href="../../data/data.tar.gz">All datasets, in csv and numpy formats</a></p>
+                <p><a target="_blank" href="https://drive.google.com/file/d/1dX_ehEDsn_lCQSt12C0uTJHeIamJ1X7b/view?usp=sharing">All datasets, in csv formats</a></p>
 
                 <h5 id="individual-datasets">Individual datasets</h5>
-
+                <div id="modal"> </div>
                 <table>
                     <thead>
                         <tr>
                             <th>Dataset</th>
+                            <th>Category</th>
+                            <th>Instances</th>
+                            <th>Dimensions</th>
+                            <th>Attributions</th>
                             <th>Data (csv)</th>
-                            <th>Labels (csv)</th>
-                            <th>Data (numpy)</th>
-                            <th>Labels (numpy)</th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
-                            <td><a href="https://archive.ics.uci.edu/ml/datasets/bank+marketing">bank</a></td>
-                            <td><a href="../../data/bank/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/bank/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/bank/X.npy">X.npy</a></td>
-                            <td><a href="../../data/bank/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://www.cs.toronto.edu/~kriz/cifar.html">cifar10</a></td>
-                            <td><a href="../../data/cifar10/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/cifar10/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/cifar10/X.npy">X.npy</a></td>
-                            <td><a href="../../data/cifar10/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://archive.ics.uci.edu/ml/datasets/CNAE-9">cnae9</a></td>
-                            <td><a href="../../data/cnae9/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/cnae9/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/cnae9/X.npy">X.npy</a></td>
-                            <td><a href="../../data/cnae9/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="http://www.cs.columbia.edu/CAVE/software/softlib/coil-20.php">coil20</a></td>
-                            <td><a href="../../data/coil20/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/coil20/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/coil20/X.npy">X.npy</a></td>
-                            <td><a href="../../data/coil20/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a
-                                    href="https://archive.ics.uci.edu/ml/datasets/Epileptic+Seizure+Recognition">epileptic</a>
-                            </td>
-                            <td><a href="../../data/epileptic/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/epileptic/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/epileptic/X.npy">X.npy</a></td>
-                            <td><a href="../../data/epileptic/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://github.com/zalandoresearch/fashion-mnist">fashion_mnist</a></td>
-                            <td><a href="../../data/fashion_mnist/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/fashion_mnist/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/fashion_mnist/X.npy">X.npy</a></td>
-                            <td><a href="../../data/fashion_mnist/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://people.csail.mit.edu/celiu/CVPR2010/FMD/">fmd</a></td>
-                            <td><a href="../../data/fmd/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/fmd/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/fmd/X.npy">X.npy</a></td>
-                            <td><a href="../../data/fmd/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a
-                                    href="https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones">har</a>
-                            </td>
-                            <td><a href="../../data/har/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/har/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/har/X.npy">X.npy</a></td>
-                            <td><a href="../../data/har/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a
-                                    href="https://github.com/t-davidson/hate-speech-and-offensive-language">hatespeech</a>
-                            </td>
-                            <td><a href="../../data/hatespeech/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/hatespeech/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/hatespeech/X.npy">X.npy</a></td>
-                            <td><a href="../../data/hatespeech/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="http://www.agnostic.inf.ethz.ch/">hiva</a></td>
-                            <td><a href="../../data/hiva/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/hiva/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/hiva/X.npy">X.npy</a></td>
-                            <td><a href="../../data/hiva/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="http://ai.stanford.edu/~amaas/data/sentiment">imdb</a></td>
-                            <td><a href="../../data/imdb/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/imdb/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/imdb/X.npy">X.npy</a></td>
-                            <td><a href="../../data/imdb/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html">orl</a>
-                            </td>
-                            <td><a href="../../data/orl/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/orl/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/orl/X.npy">X.npy</a></td>
-                            <td><a href="../../data/orl/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="http://archive.ics.uci.edu/ml/datasets/secom">secom</a></td>
-                            <td><a href="../../data/secom/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/secom/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/secom/X.npy">X.npy</a></td>
-                            <td><a href="../../data/secom/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://archive.ics.uci.edu/ml/datasets/seismic-bumps">seismic</a></td>
-                            <td><a href="../../data/seismic/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/seismic/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/seismic/X.npy">X.npy</a></td>
-                            <td><a href="../../data/seismic/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a
-                                    href="https://archive.ics.uci.edu/ml/datasets/Sentiment+Labelled+Sentences">sentiment</a>
-                            </td>
-                            <td><a href="../../data/sentiment/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/sentiment/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/sentiment/X.npy">X.npy</a></td>
-                            <td><a href="../../data/sentiment/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://archive.ics.uci.edu/ml/datasets/sms+spam+collection">sms</a></td>
-                            <td><a href="../../data/sms/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/sms/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/sms/X.npy">X.npy</a></td>
-                            <td><a href="../../data/sms/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="https://archive.ics.uci.edu/ml/datasets/spambase">spambase</a></td>
-                            <td><a href="../../data/spambase/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/spambase/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/spambase/X.npy">X.npy</a></td>
-                            <td><a href="../../data/spambase/y.npy">y.npy</a></td>
-                        </tr>
-
-                        <tr>
-                            <td><a href="http://ufldl.stanford.edu/housenumbers/">svhn</a></td>
-                            <td><a href="../../data/svhn/X.csv.gz">X.csv.gz</a></td>
-                            <td><a href="../../data/svhn/y.csv.gz">y.csv.gz</a></td>
-                            <td><a href="../../data/svhn/X.npy">X.npy</a></td>
-                            <td><a href="../../data/svhn/y.npy">y.npy</a></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="tab"> </tbody>
                 </table>
-
+ 
             </section>
             <footer class="post-footer">
 
