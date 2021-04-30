@@ -1,0 +1,9 @@
+dataset_name;dataset_type;size;dimensionality;sparsity_ratio;intrinsic_dimensionality
+Wine;tables;6497;11;0.002378720248506272;8
+AirQuality;tables;9357;13;0.13729745727180798;5
+Concrete;tables;1030;8;0.17730582524271843;6
+Defaultcc;tables;30000;23;0.10700579710144931;8
+Software;tables;6773;12;0.08180766770018211;7
+WisconsinBreastCancer;tables;569;30;0.0059753954305800105;10
+Reuters;text;8432;1000;0.9488940939278937;696
+CityPollution;tables;32681;10;0.005177320155442033;6

@@ -175,8 +175,8 @@
         "attributes": 12
     },
     "download": {
-        "type": "-",
-        "url": "https://drive.google.com/file/d/1r9fodG3tdWYc3hGCkpgVrtTyijf9poPo/view?usp=sharing",
+        "type": "csv",
+        "url": "https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/software-src.csv",
         "projection": "https://github.com/TianZonglin/user-study-mdpi-repo2/raw/main/projections/Software_projections.zip"
     },
     "attrs": {
