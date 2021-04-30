@@ -176,7 +176,7 @@
     },
     "download": {
         "type": "csv",
-        "url": "https://cdn.jsdelivr.net/gh/TianZonglin/user-study-mdpi-repo2/software-src.csv",
+        "url": "https://github.com/TianZonglin/user-study-mdpi-repo2/raw/main/software-src.csv",
         "projection": "https://github.com/TianZonglin/user-study-mdpi-repo2/raw/main/projections/Software_projections.zip"
     },
     "attrs": {
